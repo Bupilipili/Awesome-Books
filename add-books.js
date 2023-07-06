@@ -1,47 +1,47 @@
-const title = document.querySelector('#title');
-const author = document.querySelector('#author');
-const add = document.querySelector('.submit');
-const allBooks = document.querySelector('#all-books');
+const buttonAdd = document.querySelector('.add-button');
+const bookTitle = document.querySelector('.input-field1');
+const bookAuthor = document.querySelector('.input-field2');
+const bookShelf = document.querySelector('.books-section');
 
-const bookStore = JSON.parse(localStorage.getItem('books')) || [];
+const awesomeBooks = JSON.parse(localStorage.getItem('books')) || [];
 
-function showBooks() {
-  const displayBooks = bookStore.map((book, index) => `
-    <article class="books">
-      <p>${book.title}</p>
-      <p>${book.author}</p>
-      <button class="remove" onclick="removeBook(${index})">Remove</button>
-      <hr />
-    </article>
-`);
-  allBooks.innerHTML = displayBooks.join('');
-}
-
-function addBooks() {
-  if (title.value !== '' && author.value !== '') {
-    bookStore.push({ title: title.value, author: author.value });
+function addAwesomeBooks() {
+  if (bookTitle.value !== '' && bookAuthor.value !== '') {
+    awesomeBooks.push({ title: bookTitle.value, author: bookAuthor.value });
   }
 }
 
-function saveBooks() {
-  localStorage.setItem('books', JSON.stringify(bookStore));
+function clearInput() {
+  bookTitle.value = '';
+  bookAuthor.value = '';
 }
 
-function clearInput() {
-  title.value = '';
-  author.value = '';
+function savedBooks() {
+  localStorage.setItem('books', JSON.stringify(awesomeBooks));
+}
+
+function showBooks() {
+  const displayBooks = awesomeBooks.map((book, index) => `
+    <div>
+      <p class="book-title">${book.title}</p>
+      <p class="book-author">${book.author}</p>
+      <button class="remove-button" onclick="removeBook(${index})">Remove</button>
+      <hr />
+    </div>
+  `);
+  bookShelf.innerHTML = displayBooks.join('');
 }
 
 function removeBook(index) { // eslint-disable-line no-unused-vars
-  bookStore.splice(index, 1);
-  saveBooks();
+  awesomeBooks.splice(index, 1);
+  savedBooks();
   showBooks();
 }
 
-add.addEventListener('click', (e) => {
+buttonAdd.addEventListener('click', (e) => {
   e.preventDefault();
-  addBooks();
-  saveBooks();
+  addAwesomeBooks();
+  savedBooks();
   showBooks();
   clearInput();
 });
