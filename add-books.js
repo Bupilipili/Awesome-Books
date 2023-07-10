@@ -10,15 +10,7 @@ const bookCollection = new BookCollection();
 bookCollection.addBook();
 
 // Displays all the initiated variables
-import {
-  listBook,
-  newBook,
-  contact,
-  section1,
-  section2,
-  section3,
-  logo,
-  separator,
+import { listBook, newBook, contact, section1, section2, section3, logo, separator,
 } from './modules/variables.js';
 
 // Displays addBooks at default
