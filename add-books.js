@@ -81,9 +81,9 @@ const dateInfo = document.querySelector('.date-info');
 
 const seperator = document.querySelector('.seperator');
 
-//displays listBooks at default 
-section1.style.display = '';
-section2.style.display = 'none';
+//displays add newbook at default 
+section1.style.display = 'none';
+section2.style.display = '';
 section3.style.display = 'none';
 seperator.style.display = 'none';
 logo.innerHTML = 'Awesome Books';
@@ -100,14 +100,14 @@ newBook.addEventListener('click', () => {
   section1.style.display = 'none';
   section2.style.display = '';
   section3.style.display = 'none';
-  logo.innerHTML = 'Add Book';
+  logo.innerHTML = 'Awesome Books';
 });
 
 contact.addEventListener('click', () => {
   section1.style.display = 'none';
   section2.style.display = 'none';
   section3.style.display = '';
-  logo.innerHTML = 'Contact';
+  logo.innerHTML = 'Awesome Books';
 });
 
 // Add date to page
@@ -118,7 +118,7 @@ let date = d.getDate();
 const month = d.getMonth();
 const hour = d.getHours();
 const minute = d.getMinutes();
-//const second = d.getSeconds();
+const second = d.getSeconds();
 let ampm;
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -139,4 +139,4 @@ if (hour < 12) {
 // Add leading zero to minutes if necessary
 const formattedMinutes = minute.toString().padStart(2, '0');
 
-dateInfo.innerHTML = `${months[month]} ${date} ${year}, ${hour}:${formattedMinutes}${ampm}`;
+dateInfo.innerHTML = `${months[month]} ${date} ${year}, ${hour}:${formattedMinutes}:${second}${ampm}`;
