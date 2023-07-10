@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { Book } from './class.js';
 
 export class BookCollection {
@@ -20,7 +21,7 @@ export class BookCollection {
     this.bookShelf.addEventListener('click', (event) => {
       if (event.target.classList.contains('remove-button')) {
         const index = Array.from(event.target.parentNode.parentNode.children).indexOf(
-          event.target.parentNode
+          event.target.parentNode,
         );
         this.removeBook(index);
       }
