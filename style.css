@@ -187,8 +187,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  list-style: none;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 0;
+  padding-right: 10px;
 }
 
 .date-container {
-  float: right;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+  padding-right: 10px;
 }
