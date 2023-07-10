@@ -2,21 +2,26 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable-line no-unused-vars */
 
-import {
-  BookCollection
-}from'./modules/methods.js';
+import { BookCollection } from './modules/methods.js';
 
-//book collection
+// Book collection
 const bookCollection = new BookCollection();
 
 bookCollection.addBook();
 
-// displays all the initiated variables
+// Displays all the initiated variables
 import {
-  listBook, newBook, contact, section1, section2, section3, logo, separator,
-}from './modules/variables.js';
+  listBook,
+  newBook,
+  contact,
+  section1,
+  section2,
+  section3,
+  logo,
+  separator,
+} from './modules/variables.js';
 
-//Displays addBooks at default
+// Displays addBooks at default
 section1.style.display = 'none';
 section2.style.display = '';
 section3.style.display = 'none';
