@@ -2,14 +2,7 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable-line no-unused-vars */
 
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
-}
-
-import{
+import {
   BookCollection
 }from'./modules/methods.js';
 
