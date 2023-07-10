@@ -1,6 +1,7 @@
 import {
     listBook, newBook, contact, section1, section2, section3, logo, separator,
 }from'./variables.js'
+
 export function handleListBookClick() {
     section1.style.display = '';
     section2.style.display = 'none';
