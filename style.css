@@ -182,3 +182,13 @@ body {
   font-weight: 500;
   font-family: 'Nanum Pen Script', Arial, Helvetica, sans-serif;
 }
+
+.nav-link-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.date-container {
+  float: right;
+}
