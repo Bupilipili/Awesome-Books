@@ -3,140 +3,44 @@
 /* eslint-disable-line no-unused-vars */
 
 class Book {
-    constructor(title, author) {
-      this.title = title;
-      this.author = author;
-    }
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
-  
-  class BookCollection {
-    constructor() {
-      this.collection = JSON.parse(localStorage.getItem('books')) || [];
-      this.buttonAdd = document.querySelector('.add-button');
-      this.bookTitle = document.querySelector('.input-field1');
-      this.bookAuthor = document.querySelector('.input-field2');
-      this.bookShelf = document.querySelector('.books-section');
-  
-      this.showBooks();
-      this.buttonAdd.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.addBook();
-        this.saveBooks();
-        this.showBooks();
-        this.clearInput();
-      });
-    }
-  
-    addBook() {
-      if (this.bookTitle.value !== '' && this.bookAuthor.value !== '') {
-        const book = new Book(this.bookTitle.value, this.bookAuthor.value);
-        this.collection.push(book);
-      }
-    }
-  
-    removeBook(index) {
-      this.collection.splice(index, 1);
-      this.saveBooks();
-      this.showBooks();
-    }
-  
-    saveBooks() {
-      localStorage.setItem('books', JSON.stringify(this.collection));
-    }
-  
-    clearInput() {
-      this.bookTitle.value = '';
-      this.bookAuthor.value = '';
-    }
-  
-    showBooks() {  
-        const displayBooks = this.collection.map((book, index) => `
-          <div class="book-store ${index % 2 === 1 ? 'odd-index' : ''}">
-            <div class="store-text">
-              <p class="book-title">"${book.title}"</p>
-              <p class="by-text">by</p>
-              <p class="book-author">${book.author}</p>
-            </div>
-            <button class="remove-button" onclick="bookCollection.removeBook(${index})">Remove</button> 
-          </div>
-        `);
-        this.bookShelf.innerHTML = displayBooks.join('');
-    }      
-  }
-  
-  const bookCollection = new BookCollection();
-  bookCollection.addBook();
+}
 
-  const listBook = document.querySelector('.link-list');
-const newBook = document.querySelector('.link-new');
-const contact = document.querySelector('.link-contact');
+import{
+  BookCollection
+}from'./modules/methods.js';
 
-const section1 = document.querySelector('.section-1');
-const section2 = document.querySelector('.section-2');
-const section3 = document.querySelector('.section-3');
+//book collection
+const bookCollection = new BookCollection();
 
-const logo = document.querySelector('.logo');
+bookCollection.addBook();
 
-const dateInfo = document.querySelector('.date-info');
+// displays all the initiated variables
+import {
+  listBook, newBook, contact, section1, section2, section3, logo, separator,
+}from './modules/variables.js';
 
-const seperator = document.querySelector('.seperator');
-
-//displays add newbook at default 
+//Displays addBooks at default
 section1.style.display = 'none';
 section2.style.display = '';
 section3.style.display = 'none';
-seperator.style.display = 'none';
+separator.style.display = 'none';
 logo.innerHTML = 'Awesome Books';
 
-listBook.addEventListener('click', () => {
-  section1.style.display = '';
-  section2.style.display = 'none';
-  section3.style.display = 'none';
-  seperator.style.display = 'none';
-  logo.innerHTML = 'Awesome Books';
-});
+import {
+  handleListBookClick,
+  handleNewBookClick,
+  handleContactClick,
+} from './modules/events.js';
 
-newBook.addEventListener('click', () => {
-  section1.style.display = 'none';
-  section2.style.display = '';
-  section3.style.display = 'none';
-  logo.innerHTML = 'Awesome Books';
-});
+listBook.addEventListener('click', handleListBookClick);
+newBook.addEventListener('click', handleNewBookClick);
+contact.addEventListener('click', handleContactClick);
 
-contact.addEventListener('click', () => {
-  section1.style.display = 'none';
-  section2.style.display = 'none';
-  section3.style.display = '';
-  logo.innerHTML = 'Awesome Books';
-});
+// Add date and time to page
+import dateTimeModule from './modules/time.js';
 
-// Add date to page
-
-const d = new Date();
-const year = d.getFullYear();
-let date = d.getDate();
-const month = d.getMonth();
-const hour = d.getHours();
-const minute = d.getMinutes();
-const second = d.getSeconds();
-let ampm;
-
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-if (date === 1 || date === 21 || date === 31) {
-  date = `${date}st`;
-} else if (date === 2 || date === 22) {
-  date = `${date}nd`;
-} else {
-  date = `${date}th`;
-}
-
-if (hour < 12) {
-  ampm = 'am';
-} else {
-  ampm = 'pm';
-}
-// Add leading zero to minutes if necessary
-const formattedMinutes = minute.toString().padStart(2, '0');
-
-dateInfo.innerHTML = `${months[month]} ${date} ${year}, ${hour}:${formattedMinutes}:${second}${ampm}`;
+dateTimeModule();
