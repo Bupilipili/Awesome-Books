@@ -34,22 +34,22 @@ export class BookCollection {
       this.collection.push(book);
     }
   };
-  
+
   removeBook = (index) => {
     this.collection.splice(index, 1);
     this.saveBooks();
     this.showBooks();
   };
-  
+
   saveBooks = () => {
     localStorage.setItem('books', JSON.stringify(this.collection));
   };
-  
+
   clearInput = () => {
     this.bookTitle.value = '';
     this.bookAuthor.value = '';
   };
-  
+
   showBooks = () => {
     const displayBooks = this.collection.map((book, index) => `
       <div class="book-store ${index % 2 === 1 ? 'odd-index' : ''}">
