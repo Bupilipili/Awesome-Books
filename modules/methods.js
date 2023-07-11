@@ -62,5 +62,5 @@ export class BookCollection {
       </div>
     `);
     this.bookShelf.innerHTML = displayBooks.join('');
-  };  
+  };
 }
