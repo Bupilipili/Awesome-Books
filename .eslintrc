@@ -1,0 +1,12 @@
+{
+    "extends": "eslint:recommended",
+        "allowParsingErrors": true,
+    "rules": {
+      "indent": ["error", 2], // Enforce consistent indentation (2 spaces)
+      "quotes": ["error", "single"], // Enforce the use of single quotes
+      "semi": ["error", "always"], // Require semicolons at the end of statements
+      "no-console": "off", // Allow console statements
+      "no-unused-vars": "warn" // Show warnings for unused variables
+    }
+  }
+  

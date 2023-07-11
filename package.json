@@ -1,0 +1,19 @@
+{
+    "name": "awesome-books",
+    "version": "1.0.0",
+    "description": "<a name=\"readme-top\"></a>",
+    "main": "add-books.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "lint": "eslint . --fix"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "luxon": "^3.3.0"
+    },
+    "devDependencies": {
+      "eslint": "^8.44.0"
+    }
+  }  
