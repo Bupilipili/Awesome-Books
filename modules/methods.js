@@ -28,29 +28,29 @@ export class BookCollection {
     });
   }
 
-  addBook() {
+  addBook = () => {
     if (this.bookTitle.value !== '' && this.bookAuthor.value !== '') {
       const book = new Book(this.bookTitle.value, this.bookAuthor.value);
       this.collection.push(book);
     }
-  }
-
-  removeBook(index) {
+  };
+  
+  removeBook = (index) => {
     this.collection.splice(index, 1);
     this.saveBooks();
     this.showBooks();
-  }
-
-  saveBooks() {
+  };
+  
+  saveBooks = () => {
     localStorage.setItem('books', JSON.stringify(this.collection));
-  }
-
-  clearInput() {
+  };
+  
+  clearInput = () => {
     this.bookTitle.value = '';
     this.bookAuthor.value = '';
-  }
-
-  showBooks() {
+  };
+  
+  showBooks = () => {
     const displayBooks = this.collection.map((book, index) => `
       <div class="book-store ${index % 2 === 1 ? 'odd-index' : ''}">
         <div class="store-text">
@@ -62,5 +62,5 @@ export class BookCollection {
       </div>
     `);
     this.bookShelf.innerHTML = displayBooks.join('');
-  }
+  };  
 }
